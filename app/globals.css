@@ -1,13 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f5f5f5;
-  --color-foreground: #191919;
-  --color-primary: #C8863A;
+  --background: #f5f5f5;
+  --foreground: #191919;
+  --primary: #C8863A;
   --color-black-half: rgba(2, 2, 2, 0.4);
 
   --font-sekuya: var(--font-sekuya), serif;
-  --font-space: var(--font-space-grotesk), sans-serif;
 
   --animate-fade-left: fadeLeft 0.5s ease forwards;
   --animate-fade-right: fadeRight 0.5s ease forwards;
