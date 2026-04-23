@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id         String      @id @default(cuid())
+  email      String      @unique
+  password   String
+  image      String?
+  name       String?
+  role       ROLE        @default(Korisnik)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  favourites Favourite[]
+}
+
+model Favourite {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  createdAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+}
+
+model Product {
+  id           String         @id @default(cuid())
+  name         String
+  description  String
+  category     Category
+  woodType     WoodType
+  dimensions   String
+  price        Float
+  createdAt    DateTime       @default(now())
+  visitors     Int            @default(0)
+  isFeatured   Boolean        @default(false)
+  favouritedBy Favourite[]
+  narudzbe     Narudzba[]
+  colors       ProductColor[]
+  images       ProductImage[]
+}
+
+model contactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  poruka    String
+  email     String
+  createdAt DateTime @default(now())
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  url       String
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model ProductColor {
+  id        String  @id @default(cuid())
+  color     Color
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, color])
+}
+
+model Narudzba {
+  id            String         @id @default(cuid())
+  ime           String
+  prezime       String
+  email         String
+  telefon       String
+  adresa        String
+  kanton        String
+  postanskiBroj String
+  productId     String
+  boja          Color
+  dimenzije     String
+  napomena      String?
+  status        NarudzbaStatus @default(NOVA)
+  createdAt     DateTime       @default(now())
+  product       Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+enum ROLE {
+  Korisnik
+  Moderator
+  Vlasnik
+  Programer
+}
+
+enum Category {
+  STOLOVI
+  POLICE
+  STOLICE
+  KOMODE
+  VRATA
+}
+
+enum WoodType {
+  HRAST
+  BUKVA
+  ORAH
+  JASEN
+  TRESNJA
+  BOR
+  JELA
+  MEDIJAPAN
+  IVERICA
+}
+
+enum Color {
+  BIJELA
+  CRNA
+  DRVO
+}
+
+enum NarudzbaStatus {
+  NOVA
+  U_OBRADI
+  ZAVRSENA
+  OTKAZANA
+}
