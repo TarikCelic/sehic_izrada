@@ -97,7 +97,7 @@ export default function Navigation() {
                 ${isMobileOpen ? "pointer-events-none" : "pointer-events-auto"}`}
       >
         <Link
-          href={"/public"}
+          href={"/"}
           className={`transition-all duration-700 will-change-transform ${
             isMounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
           } ${!isLightMode && !isMobileOpen ? "invert" : ""}`}

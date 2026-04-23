@@ -35,5 +35,5 @@
 
 1. opt slika  - 100%
 2. opt fontova — 100%
-3. provjera API poziva - 0%
+3. provjera API poziva - 100%
 4. lazy loading komponenti - 100%
