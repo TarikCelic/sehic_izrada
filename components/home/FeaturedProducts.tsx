@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -60,7 +60,7 @@ export default function FeaturedProducts() {
           setIsInView(false);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -72,13 +72,17 @@ export default function FeaturedProducts() {
 
   return (
     <section ref={sectionRef} className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
-      <div className={`text-center mb-8 md:mb-12 will-change-transform transition-all duration-700 ${
-        isInView 
-          ? "opacity-100 translate-y-0" 
-          : "opacity-0 translate-y-8"
-      }`}>
-        <p className="font-mono text-xs sm:text-sm tracking-widest text-[var(--primary)]">IZDVOJENO</p>
-        <h2 className="font-sekuya text-2xl sm:text-3xl md:text-4xl mt-1">Istaknuti proizvodi</h2>
+      <div
+        className={`text-center mb-8 md:mb-12 will-change-transform transition-all duration-700 ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <p className="font-mono text-xs sm:text-sm tracking-widest text-[var(--primary)]">
+          IZDVOJENO
+        </p>
+        <h2 className="font-sekuya text-2xl sm:text-3xl md:text-4xl mt-1">
+          Istaknuti proizvodi
+        </h2>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
@@ -87,12 +91,10 @@ export default function FeaturedProducts() {
             key={product.id}
             href={product.href}
             className={`group flex flex-col will-change-transform transition-all duration-700 ${
-              isInView 
-                ? "opacity-100 translate-y-0" 
-                : "opacity-0 translate-y-8"
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
             style={{
-              transitionDelay: isInView ? `${(idx + 1) * 50}ms` : "0ms"
+              transitionDelay: isInView ? `${(idx + 1) * 50}ms` : "0ms",
             }}
           >
             <div className="relative w-full aspect-[3/4] overflow-hidden rounded-sm bg-[#f0ece6]">
@@ -130,14 +132,14 @@ export default function FeaturedProducts() {
         ))}
       </div>
 
-      <div className={`flex justify-center mt-8 md:mt-12 will-change-transform transition-all duration-700 ${
-        isInView 
-          ? "opacity-100 translate-y-0" 
-          : "opacity-0 translate-y-8"
-      }`}
-      style={{
-        transitionDelay: isInView ? `${(PRODUCTS.length + 1) * 50}ms` : "0ms"
-      }}>
+      <div
+        className={`flex justify-center mt-8 md:mt-12 will-change-transform transition-all duration-700 ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+        style={{
+          transitionDelay: isInView ? `${(PRODUCTS.length + 1) * 50}ms` : "0ms",
+        }}
+      >
         <Link
           href="/katalog"
           className="font-mono text-xs sm:text-sm tracking-widest border border-black px-6 sm:px-10 py-3 sm:py-4 hover:bg-black hover:text-white transition-colors duration-300"

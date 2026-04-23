@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -19,7 +19,9 @@ const extractSuffix = (str: string): string => {
 
 export default function Stats() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [displayNumbers, setDisplayNumbers] = useState<{ [key: string]: number }>({});
+  const [displayNumbers, setDisplayNumbers] = useState<{
+    [key: string]: number;
+  }>({});
   const hasCountedRef = useRef(false);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function Stats() {
       ([entry]) => {
         if (entry.isIntersecting && !hasCountedRef.current) {
           hasCountedRef.current = true;
-          
+
           const initialNumbers: { [key: string]: number } = {};
           STATS.forEach((stat) => {
             initialNumbers[stat.label] = 0;
@@ -58,7 +60,7 @@ export default function Stats() {
           requestAnimationFrame(animate);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
@@ -69,7 +71,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="border-y border-[#a3a3a32a] py-8 md:py-10"
     >
@@ -84,8 +86,7 @@ export default function Stats() {
             <span className="font-sekuya text-3xl sm:text-4xl text-[var(--primary)] min-w-[60px] text-center">
               {displayNumbers[stat.label] !== undefined
                 ? `${displayNumbers[stat.label]}${extractSuffix(stat.number)}`
-                : stat.number
-              }
+                : stat.number}
             </span>
             <span className="font-mono text-[0.65rem] sm:text-xs tracking-widest uppercase text-black/50 text-center">
               {stat.label}

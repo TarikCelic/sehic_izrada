@@ -9,7 +9,9 @@ const Page = () => {
     <section className="flex flex-col gap-8 p-4 sm:p-6">
       <div className="animate-fadeUp">
         <h1 className="text-2xl font-bold text-zinc-900">Sekcije</h1>
-        <p className="text-sm text-amber-600 mt-0.5">Uredite prikaz sadrzaja na odredenim sekcijama.</p>
+        <p className="text-sm text-amber-600 mt-0.5">
+          Uredite prikaz sadrzaja na odredenim sekcijama.
+        </p>
       </div>
 
       <div className="flex flex-col animate-fade-down">

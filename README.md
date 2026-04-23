@@ -33,7 +33,7 @@
 
 ## optimizacija
 
-1. opt slika  - 0%
-2. opt fontova — 0%
+1. opt slika  - 100%
+2. opt fontova — 100%
 3. provjera API poziva - 0%
-4. lazy loading komponenti - 0%
+4. lazy loading komponenti - 100%

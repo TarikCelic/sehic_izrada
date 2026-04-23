@@ -5,6 +5,45 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+enum ROLE {
+  Korisnik
+  Moderator
+  Vlasnik
+  Programer
+}
+
+enum Category {
+  STOLOVI
+  POLICE
+  STOLICE
+  KOMODE
+  VRATA
+}
+
+enum WoodType {
+  HRAST
+  BUKVA
+  ORAH
+  JASEN
+  TRESNJA
+  BOR
+  JELA
+  MEDIJAPAN
+  IVERICA
+}
+
+enum Color {
+  BIJELA
+  CRNA
+  DRVO
+}
+
+enum NarudzbaStatus {
+  NOVA
+  U_OBRADI
+  ZAVRSENA
+  OTKAZANA
+}
 
 model User {
   id         String      @id @default(cuid())
@@ -88,42 +127,3 @@ model Narudzba {
   product       Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
-enum ROLE {
-  Korisnik
-  Moderator
-  Vlasnik
-  Programer
-}
-
-enum Category {
-  STOLOVI
-  POLICE
-  STOLICE
-  KOMODE
-  VRATA
-}
-
-enum WoodType {
-  HRAST
-  BUKVA
-  ORAH
-  JASEN
-  TRESNJA
-  BOR
-  JELA
-  MEDIJAPAN
-  IVERICA
-}
-
-enum Color {
-  BIJELA
-  CRNA
-  DRVO
-}
-
-enum NarudzbaStatus {
-  NOVA
-  U_OBRADI
-  ZAVRSENA
-  OTKAZANA
-}

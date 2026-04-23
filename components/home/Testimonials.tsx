@@ -41,13 +41,15 @@ function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-[2px]">
       {Array.from({ length: count }).map((_, i) => (
-        <span key={i} className="text-[var(--primary)] text-sm">★</span>
+        <span key={i} className="text-[var(--primary)] text-sm">
+          ★
+        </span>
       ))}
     </div>
   );
 }
 
-function TestimonialCard({ t }: { t: typeof TESTIMONIALS[0] }) {
+function TestimonialCard({ t }: { t: (typeof TESTIMONIALS)[0] }) {
   return (
     <div className="flex-none w-[17rem] sm:w-72 md:w-80 bg-white border border-black/10 rounded-sm p-4 sm:p-6 mx-2">
       <Stars count={t.rating} />
@@ -62,7 +64,9 @@ function TestimonialCard({ t }: { t: typeof TESTIMONIALS[0] }) {
         </div>
         <div>
           <p className="font-medium text-sm">{t.name}</p>
-          <p className="font-mono text-xs text-black/40 tracking-wide">{t.location}</p>
+          <p className="font-mono text-xs text-black/40 tracking-wide">
+            {t.location}
+          </p>
         </div>
       </div>
     </div>
@@ -72,10 +76,13 @@ function TestimonialCard({ t }: { t: typeof TESTIMONIALS[0] }) {
 export default function Testimonials() {
   return (
     <section className="py-12 md:py-20 overflow-hidden">
-
       <div className="text-center mb-8 md:mb-12 px-4">
-        <p className="font-mono text-xs sm:text-sm tracking-widest text-[var(--primary)]">RECENZIJE</p>
-        <h2 className="font-sekuya text-3xl sm:text-3xl md:text-4xl mt-1">Šta kažu kupci</h2>
+        <p className="font-mono text-xs sm:text-sm tracking-widest text-[var(--primary)]">
+          RECENZIJE
+        </p>
+        <h2 className="font-sekuya text-3xl sm:text-3xl md:text-4xl mt-1">
+          Šta kažu kupci
+        </h2>
       </div>
 
       <div className="flex group">
@@ -84,13 +91,15 @@ export default function Testimonials() {
             <TestimonialCard key={i} t={t} />
           ))}
         </div>
-        <div className="flex animate-marquee group-hover:[animation-play-state:paused]" aria-hidden>
+        <div
+          className="flex animate-marquee group-hover:[animation-play-state:paused]"
+          aria-hidden
+        >
           {TESTIMONIALS.map((t, i) => (
             <TestimonialCard key={i} t={t} />
           ))}
         </div>
       </div>
-
     </section>
   );
 }
