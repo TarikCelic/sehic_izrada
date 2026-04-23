@@ -9,7 +9,7 @@ const PRODUCTS = [
     id: 1,
     name: "Sto od hrasta",
     price: "890 KM",
-    href: "/katalog/sto-od-hrasta",
+    href: "/katalog",
     image: "/katalog/sto-hrast.jpg",
     tag: "Bestseller",
   },
@@ -17,7 +17,7 @@ const PRODUCTS = [
     id: 2,
     name: "Industrijska polica",
     price: "450 KM",
-    href: "/katalog/industrijska-polica",
+    href: "/katalog",
     image: "/katalog/polica.jpg",
     tag: null,
   },
@@ -25,7 +25,7 @@ const PRODUCTS = [
     id: 3,
     name: "Metalna stolica",
     price: "280 KM",
-    href: "/katalog/metalna-stolica",
+    href: "/katalog",
     image: "/katalog/stolica.jpeg",
     tag: "Novo",
   },
@@ -33,7 +33,7 @@ const PRODUCTS = [
     id: 4,
     name: "Komoda",
     price: "1.200 KM",
-    href: "/katalog/radni-sto",
+    href: "/katalog",
     image: "/katalog/komoda.jpeg",
     tag: null,
   },
@@ -115,7 +115,7 @@ export default function FeaturedProducts() {
 
               <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4 translate-y-0 sm:translate-y-full sm:group-hover:translate-y-0 transition-transform duration-500">
                 <button className="w-full bg-white text-black font-mono text-[0.6rem] sm:text-xs tracking-widest py-2 sm:py-3 hover:bg-[var(--primary)] hover:text-white transition-colors duration-300">
-                  DODAJ U KOŠARICU
+                  PREGLED PROIZVODA
                 </button>
               </div>
             </div>
