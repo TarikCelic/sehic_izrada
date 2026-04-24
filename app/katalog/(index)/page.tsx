@@ -19,20 +19,7 @@ interface PageProps {
   }>;
 }
 
-const getProducts = unstable_cache(
-  async (
-    where: Prisma.ProductWhereInput,
-    orderBy: Prisma.ProductOrderByWithRelationInput,
-  ) => {
-    return prisma.product.findMany({
-      where,
-      include: { images: { take: 1 }, colors: true },
-      orderBy,
-    });
-  },
-  ["katalog-products"],
-  { revalidate: 30 },
-);
+
 
 export default async function KatalogPage({ searchParams }: PageProps) {
   const params = await searchParams;
@@ -66,8 +53,25 @@ export default async function KatalogPage({ searchParams }: PageProps) {
     price: { gte: minPrice, lte: maxPrice },
   };
 
+  const cacheKey = `katalog-${JSON.stringify(where)}-${JSON.stringify(orderBy)}`;
+  const getProducts = unstable_cache(
+    async (
+      where: Prisma.ProductWhereInput,
+      orderBy: Prisma.ProductOrderByWithRelationInput,
+    ) => {
+      return prisma.product.findMany({
+        where,
+        include: { images: { take: 1 }, colors: true },
+        orderBy,
+      });
+    },
+    [cacheKey],
+    { revalidate: 30 },
+  );
+
   const products = await getProducts(where, orderBy);
 
+  
   return (
     <div className="mt-16 flex h-[calc(100vh-4rem)] bg-[var(--foreground)]">
       <aside className="hidden lg:flex w-64 flex-shrink-0 border-r border-white/8 flex-col animate-fade-left">

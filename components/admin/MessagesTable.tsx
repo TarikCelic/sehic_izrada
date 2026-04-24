@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { deleteMessage } from "@/lib/admin/actions";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import MessageInfo from "./MessagesInfo";
-import DeleteIcon from "@/public/svg/delete.svg";
-import Image from "next/image";
+import { useState } from 'react';
+import { deleteMessage } from '@/lib/admin/actions';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import MessageInfo from './MessagesInfo';
+import DeleteIcon from '@/public/svg/delete.svg';
+import Image from 'next/image';
 
 type Poruka = {
   id: string;
-  ime: string;
+  name: string;
   email: string;
   poruka: string;
   createdAt: Date;
@@ -21,21 +21,21 @@ export default function MessagesTable({ messages }: { messages: Poruka[] }) {
   const router = useRouter();
 
   const handleDelete = (poruka: Poruka) => {
-    const potvrda = confirm("Da li ste sigurni da želite obrisati ovu poruku?");
+    const potvrda = confirm('Da li ste sigurni da želite obrisati ovu poruku?');
     if (!potvrda) return;
 
     const finish = async () => {
       const res = await deleteMessage(poruka.id);
-      if (res?.error) throw new Error("Greška pri brisanju.");
+      if (res?.error) throw new Error('Greška pri brisanju.');
     };
 
     toast.promise(finish(), {
-      loading: "Brisanje poruke...",
+      loading: 'Brisanje poruke...',
       success: () => {
         router.refresh();
-        return "Poruka je uspješno obrisana!";
+        return 'Poruka je uspješno obrisana!';
       },
-      error: (err) => err.message || "Greška pri brisanju.",
+      error: (err) => err.message || 'Greška pri brisanju.',
     });
   };
 
@@ -61,21 +61,21 @@ export default function MessagesTable({ messages }: { messages: Poruka[] }) {
               className="flex items-center w-full px-4 py-4 border-b border-gray-100 hover:bg-gray-50 transition-colors text-sm"
             >
               <div className="w-36 shrink-0 font-medium text-gray-900 truncate pr-2">
-                {item.ime}
+                {item.name}
               </div>
               <div className="w-48 hidden md:block shrink-0 text-gray-500 truncate pr-2">
                 {item.email}
               </div>
               <div className="flex-1 min-w-0 text-gray-500 truncate pr-4">
                 {item.poruka.length > 60
-                  ? item.poruka.slice(0, 60) + "..."
+                  ? item.poruka.slice(0, 60) + '...'
                   : item.poruka}
               </div>
               <div className="w-28 shrink-0 hidden sm:block text-gray-400 text-xs font-mono">
-                {new Date(item.createdAt).toLocaleDateString("bs-BA", {
-                  day: "2-digit",
-                  month: "2-digit",
-                  year: "numeric",
+                {new Date(item.createdAt).toLocaleDateString('bs-BA', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
                 })}
               </div>
               <div className="w-20 shrink-0 flex items-center justify-evenly gap-2">

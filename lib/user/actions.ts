@@ -32,7 +32,7 @@ export async function updateUserRole(userId: string, role: ROLE) {
     data: { role },
   });
 
-  revalidatePath("/user");
+  revalidatePath("/admin/users");
 }
 
 export async function deleteAccount(id: string) {

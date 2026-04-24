@@ -18,10 +18,9 @@ const getFavourites = unstable_cache(
       },
     });
   },
-  ["user-favourites"],
+  ["user-favourites"], 
   { revalidate: 30 },
 );
-
 export default async function FavouritesPage() {
   const session = await auth();
 

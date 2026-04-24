@@ -6,7 +6,6 @@ import Image from "next/image";
 
 import Add from "@/public/svg/add.svg";
 import Dashboard from "@/public/svg/dashboard.svg";
-import Sections from "@/public/svg/sections.svg";
 import User from "@/public/svg/user.svg";
 import Product from "@/public/svg/box.svg";
 import Narudzba from "@/public/svg/narudzba.svg";
@@ -17,7 +16,6 @@ const navItems = [
   { name: "Korisnici", href: "/admin/users", icon: User },
   { name: "Dodaj proizvod", href: "/admin/add-product", icon: Add },
   { name: "Proizvodi", href: "/admin/products", icon: Product },
-  { name: "Sekcije", href: "/admin/sections", icon: Sections },
   { name: "Narudzbe", href: "/admin/narudzbe", icon: Narudzba },
   { name: "Poruke", href: "/admin/messages", icon: Poruke },
 ];
